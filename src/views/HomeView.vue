@@ -36,7 +36,6 @@
   justify-content: flex-end;
   gap: 15px;
   flex-wrap: wrap;
-  max-width: 550px;
 }
 
 .projects__list__item {

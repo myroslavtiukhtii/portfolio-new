@@ -24,8 +24,8 @@ onLoop(() => {
     <TresCanvas>
       <TresPerspectiveCamera />
       <OrbitControls make-default />
-      <TresMesh :position="[0, 0, 2]" :rotation="[0, rotationY, rotationZ]">
-        <TresBoxGeometry :args="[1, 1, 1]" />
+      <TresMesh :position="[-2, -2.5, 1]" :rotation="[0, rotationY, rotationZ]">
+        <TresBoxGeometry :args="[2, 2, 2]" />
         <TresMeshNormalMaterial />
       </TresMesh>
     </TresCanvas>
@@ -42,7 +42,7 @@ onLoop(() => {
   left: 0;
   bottom: 0;
   z-index: -1;
-  background: linear-gradient(0deg, #22c1c3 0%, #fdbb2d 100%);
+  background: linear-gradient(220deg, #22c1c3 0%, #fdbb2d 80%);
 }
 
 </style>

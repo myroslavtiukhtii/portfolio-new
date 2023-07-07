@@ -15,6 +15,14 @@
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/about">Landings</RouterLink>
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/vue">Vue</RouterLink>
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/js">JS</RouterLink>
+          <div class="about__nav__link api__link">
+            Mini
+            <ul class="about__api__list">
+              <RouterLink @click="btnIsActive = false" class="about__api__link" to="/yotubeapi">Youtube API</RouterLink>
+              <RouterLink @click="btnIsActive = false" class="about__api__link" to="/nasaapi">Nasa API</RouterLink>
+              <RouterLink @click="btnIsActive = false" class="about__api__link" to="/stocks">Stocks API</RouterLink>
+            </ul>
+          </div>
           <a target="_blank" @click="btnIsActive = false" class="about__nav__link"  href="https://myroslavtiukhtii.github.io/CV/">CV</a>
         </nav>
       </div>
@@ -30,6 +38,7 @@
       </div>
     </section>
     <ThreeObject class="object" />
+    <CodeBadge />
   </div>
 </template>
 
@@ -38,6 +47,9 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import WeatherApi from './components/WeatherApi.vue'
 import ThreeObject from './components/ThreeObject.vue'
+import CodeBadge from './components/CodeBadge.vue'
+
+
 import { defineComponent, reactive, toRefs } from 'vue';
 
 export default defineComponent({
@@ -47,7 +59,8 @@ export default defineComponent({
     RouterView,
     HelloWorld,
     WeatherApi,
-    ThreeObject
+    ThreeObject,
+    CodeBadge
   },
   setup() {
     const state = reactive({
@@ -69,6 +82,15 @@ export default defineComponent({
 
 <style lang="scss">
 
+::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+    background: gray;
+}
+::-webkit-scrollbar-thumb:vertical{
+    background: #000;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1.5s ease;
@@ -81,8 +103,10 @@ export default defineComponent({
   transform: translateX(50px);
 }
 
+
 .main {
   position: relative;
+  overflow-x: hidden;
 }
 
 .menu.active {
@@ -136,6 +160,8 @@ export default defineComponent({
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 5px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
   width: 90px;
   min-height: 100%;
   background-color: var(--main-black-color);
@@ -166,8 +192,8 @@ export default defineComponent({
     align-items: center;
     justify-items: center;
     padding-top: 10%;
-    padding-bottom: 5%;
-    gap: 25px;
+    padding-bottom: 65px;
+    gap: 35px;
 
     @media (max-width: 800px) {
       grid-template-columns: 1fr;
@@ -178,8 +204,14 @@ export default defineComponent({
   &__text {
     align-self: flex-start;
   }
+
+  &__projects {
+    width: 100%;
+  }
 }
+
 .about__nav__link {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: 25px;
@@ -191,6 +223,41 @@ export default defineComponent({
 
   &:hover {
     background-color: var(--main-grey-color);
+  }
+}
+
+.api__link:hover, .api__link:focus {
+  .about__api__list {
+    top: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.about__api__list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  top: 15px;
+  width: 90px;
+  border-radius: 15px;
+  min-height: 90px;
+  left: 120%;
+  padding: 15px;
+  background-color: var(--main-black-color);
+  transition: 0.3s ease-in;
+  opacity: 0;
+  visibility: hidden;
+  
+  .about__api__link {
+    color: var(--main-text-color);
+    text-decoration: none;
+    transition: .3s ease-in;
+
+    &:hover {
+      color: var(--main-grey-color);
+    }
   }
 }
 
