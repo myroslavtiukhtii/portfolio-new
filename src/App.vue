@@ -13,7 +13,7 @@
           <WeatherApi />
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/">Home</RouterLink>
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/about">Landings</RouterLink>
-          <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/vue">Vue</RouterLink>
+          <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/vue">Vue/Nuxt</RouterLink>
           <RouterLink @click="btnIsActive = false" class="about__nav__link" to="/js">JS</RouterLink>
           <div class="about__nav__link api__link">
             Mini
@@ -142,6 +142,7 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   background-color: #ffffffb5;
+  z-index: 99;
 
   @media (max-width: 1000px) {
       display: flex;
@@ -160,11 +161,9 @@ export default defineComponent({
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 5px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
   width: 90px;
   min-height: 100%;
-  background-color: var(--main-black-color);
+  background-color: #000;
   display: flex;
   flex-direction: column;
   row-gap: 15px;
@@ -227,6 +226,7 @@ export default defineComponent({
 }
 
 .api__link:hover, .api__link:focus {
+  cursor: pointer;
   .about__api__list {
     top: 0;
     opacity: 1;

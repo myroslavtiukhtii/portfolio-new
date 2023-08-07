@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts">
+import tesla from '../assets/images/vue/tesla.png';
 import aster from '../assets/images/vue/aaster.png';
 import store from '../assets/images/vue/store.png';
 
@@ -21,7 +22,7 @@ import store from '../assets/images/vue/store.png';
 import { ref } from 'vue';
 
 const images = [
-  aster, store
+tesla, store, aster,
 ];
 
 interface Photo {
@@ -36,14 +37,19 @@ export default {
     const photos = ref<Photo[]>([
       {
         url: images[0],
-        title: 'Aster news website',
-        link: 'https://myroslavtiukhtii.github.io/aster-news/dist/'
+        title: 'Tesla website clone (Nuxt 3 and Tailwind CSS)',
+        link: 'https://myroslavtiukhtii.github.io/tesla-nuxt/'
       },
       {
         url: images[1],
         title: 'Online store website',
         link: 'https://myroslavtiukhtii.github.io/online-store/dist/'
-      }
+      },
+      {
+        url: images[2],
+        title: 'Aster news website',
+        link: 'https://myroslavtiukhtii.github.io/aster-news/dist/'
+      },
     ]);
 
     const currentPhotoIndex = ref(0);

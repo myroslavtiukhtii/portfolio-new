@@ -107,6 +107,9 @@ export default defineComponent({
 .about__stocks {
     display: flex;
     flex-direction: column;
+    background-color: #0000001e;
+    padding: 15px;
+    border-radius: 15px;
 }
 .about__title {
     font-size: clamp(0.5rem, 7vw, 1.5rem);
@@ -124,12 +127,16 @@ export default defineComponent({
 
     .about__search__input {
         width: 100%;
-        min-height: 50px;
-        border-radius: 5px;
+        min-height: 40px;
+        border-radius: 15px;
         padding-left: 15px;
+        border: 1px solid var(--main-text-color);
+        background-color: #00000094;
+        color: var(--main-text-color);
         
         &::placeholder {
             font-size: 1rem;
+            color: var(--main-text-color);
         }
     }
 }
@@ -153,7 +160,7 @@ export default defineComponent({
     background: linear-gradient(90deg, rgba(126,126,126,0.8267682072829132) 0%, rgba(85,85,85,1) 100%);
 
     .list__ticker__title {
-        font-size: clamp(1rem, 7vw, 2rem);
+        font-size: clamp(0.5rem, 7vw, 2rem);
         color: var(--main-text-color);
         margin-bottom: 45px;
     }
@@ -173,7 +180,7 @@ export default defineComponent({
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: clamp(0.7rem, 7vw, 1.5rem);
+        font-size: clamp(0.5rem, 7vw, 1.2rem);
         color: var(--main-text-color);
     }
 

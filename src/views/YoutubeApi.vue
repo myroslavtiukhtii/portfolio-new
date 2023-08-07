@@ -28,6 +28,13 @@
                 <h3 class="main__list__title">{{ item.snippet.title }}</h3>
                 <div class="main__list__buttons">
                   <button @click="deleteFavorItem(index)" class="list__buttons__favorite">Delete</button>
+                  <button @click="onScreen(index)" class="list__buttons__screen">
+                    <svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                      version="1.1" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="1.5">
+                      <path d="m5.25 14.25h-3.5v-3.5m12.5 0v3.5h-3.5m0-12.5h3.5v3.5m-12.5 0v-3.5h3.5"/>
+                    </svg>
+                  </button>
                 </div>
               </li>
             </transition-group>
@@ -40,6 +47,13 @@
                 <div class="main__list__buttons">
                   <button @click="addFavorite(index)" class="list__buttons__favorite">Add to favorites</button>
                   <button @click="deleteItem(index)" class="list__buttons__favorite">Delete</button>
+                  <button @click="onScreen(index)" class="list__buttons__screen">
+                    <svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
+                      version="1.1" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="1.5">
+                      <path d="m5.25 14.25h-3.5v-3.5m12.5 0v3.5h-3.5m0-12.5h3.5v3.5m-12.5 0v-3.5h3.5"/>
+                    </svg>
+                  </button>
                 </div>
               </li>
             </transition-group>
@@ -94,11 +108,24 @@ export default defineComponent({
         this.favorItems.push(this.searchData[index]);
         const mainBlock = document.querySelector('.about__main') as HTMLElement;
         const btn = mainBlock.querySelectorAll('.list__buttons__favorite');
-        console.log(btn[index])
+        console.log(btn[index]);
       }
     },
     deleteFavorItem(index: any) {
       this.favorItems.splice(index, 1);
+    },
+    onScreen(index: any) {
+      let videoItem = document.querySelectorAll('.main__list__video');
+      let btnScreen = document.querySelectorAll('.list__buttons__screen');
+
+      if(videoItem[index].classList.contains('active') && btnScreen[index].classList.contains('active')) {
+        videoItem[index].classList.remove('active');
+        btnScreen[index].classList.remove('active');
+      } else {
+        videoItem[index].classList.add('active');
+        btnScreen[index].classList.add('active');
+        window.scrollTo(0, document.body.scrollHeight)
+      }
     }
   },
   mounted() {
@@ -129,6 +156,10 @@ export default defineComponent({
 .about__youtube__block {
   display: flex;
   flex-direction: column;
+  background-color: #0000009f;
+  padding: 15px;
+  padding-top: 50px;
+  border-radius: 15px;
 }
 .about__youtube {
     width: 100%;
@@ -137,7 +168,7 @@ export default defineComponent({
 
 .about__title {
   font-size: 1.5rem;
-  margin-bottom: 35px;
+  margin-bottom: 55px;
 }
 
 .about__search {
@@ -152,13 +183,14 @@ export default defineComponent({
   .about__input {
     width: 100%;
     height: 100%;
-    border: 1px solid #fff;
+    border: 1px solid #ffffff64;
     border-radius: 45px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     padding: 15px;
     background-color: var(--main-black-color);
     color: #fff;
+    outline: unset;
   }
 
   .about__icon {
@@ -169,6 +201,7 @@ export default defineComponent({
     height: 100%;
     padding: 15px;
     background-color: #4e4e4e;
+    border: 1px solid #ffffff64;
     border-top-right-radius: 45px;
     border-bottom-right-radius: 45px;
     cursor: pointer;
@@ -192,10 +225,26 @@ export default defineComponent({
   }
 
 .main__list__video {
+  border-radius: 15px;
   margin-bottom: 5px;
   width: 100%;
   height: auto;
   min-height: 200px;
+  transition: .5s ease-in;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+  &.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 888;
+  }
+
+  &:hover {
+    border-radius: 0;
+  }
 }
 
 .main__list__title {
@@ -211,7 +260,11 @@ export default defineComponent({
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 
-    @media (max-width: 500px) {
+    @media (min-width: 801px) and (max-width:900px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 600px) {
       grid-template-columns: 1fr;
     }
 }
@@ -229,6 +282,11 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+  border-bottom: 1px solid #000;
+
+  @media (min-width: 801px) and (max-width:900px) {
+      grid-template-columns: 1fr;
+    }
 
   @media (max-width: 500px) {
       grid-template-columns: 1fr;
@@ -238,7 +296,6 @@ export default defineComponent({
 .main__list__item {
   padding: 10px;
   padding-bottom: 25px;
-  background-color: var(--main-black-color);
   border-radius: 5px;
 
   .main__list__title {
@@ -256,20 +313,50 @@ export default defineComponent({
 
     button {
       width: 110px;
-      min-height: 40px;
-      background-color: #4e4e4e;
+      min-height: 35px;
+      background-color: #000000;
+      border: unset;
       color: #fff;
-      border-radius: 5px;
+      border-radius: 15px;
       cursor: pointer;
       transition: .3s ease-in;
 
       @media (any-hover: hover) {
           &:hover {
-            background: #fff;
-            color: #4e4e4e;
+            background: #4e4e4e;
         }
       }
     }
+  }
+}
+
+.list__buttons__screen {
+    display: grid;
+    place-items: center;
+    width: 35px !important;
+    height: 35px !important;
+    padding: unset !important;
+    border: unset !important;
+    position: relative;;
+    outline: none;
+
+    &:hover {
+      rotate: 45deg;
+      background-color: #000 !important;
+    }
+  
+  svg {
+    width: 25px;
+    height: 25px;
+    stroke: #fff;
+  }
+  
+  &.active {
+    rotate: 45deg;
+    position: absolute;
+    bottom: 5%;
+    right: 15px;
+    z-index: 1999;
   }
 }
 

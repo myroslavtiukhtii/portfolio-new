@@ -183,27 +183,13 @@ export default {
       background-color: #000000;
       color: var(--main-text-color);
       cursor: pointer;
-      transition: .3s ease-in-out;
+      transition: .5s ease-in;
       z-index: 2;
-
-      &::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        inset: -0.2rem;
-        background-color: #00000049;
-        z-index: 1;
-        transition: .3s ease-in-out;
-      }
 
       @media (any-hover: hover) {
         &:hover {
-          background-color: var(--main-black-color);
-
-          &::after {
-            inset: 0;
-          }
+          color: #000;
+          background-color: #fff;
         }
       }
     }

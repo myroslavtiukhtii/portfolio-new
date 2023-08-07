@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
 import LandingViewVue from '../views/LandingView.vue';
@@ -11,7 +11,7 @@ import EpiCamera from '../views/nasa/EpiCamera.vue';
 import StocksApi from '../views/StocksApi.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',

@@ -6,6 +6,7 @@
       <li class="projects__list__item">#CSS</li>
       <li class="projects__list__item">#Javascript</li>
       <li class="projects__list__item">#TypeScript</li>
+      <li class="projects__list__item">#Nuxt</li>
       <li class="projects__list__item">#Vue.js</li>
       <li class="projects__list__item">#Vue Router</li>
       <li class="projects__list__item">#Vite</li>
@@ -16,6 +17,7 @@
       <li class="projects__list__item">#Gulp</li>
       <li class="projects__list__item">#npm</li>
       <li class="projects__list__item">#GSAP</li>
+      <li class="projects__list__item">#Tailwind CSS</li>
     </ul>
   </div>
 </template>
